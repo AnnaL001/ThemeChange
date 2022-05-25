@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">ThemeChange</string>
+  <string name="change_theme">Change theme</string>
+  <string name="select_theme">Select your preferred theme</string>
+  <string name="light_theme">Light Theme</string>
+  <string name="dark_theme">Dark theme</string>
+  <string name="device_theme">Device Theme</string>
+  <string name="submit">Submit</string>
+  <string name="cancel">Cancel</string>
+</resources>
