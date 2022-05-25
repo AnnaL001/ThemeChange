@@ -29,27 +29,29 @@ public class ThemeDialogFragment extends DialogFragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
     binding.btnSubmit.setOnClickListener(submitButton -> {
       int selectedId = binding.themeRadioGroup.getCheckedRadioButtonId(); // Get selected radio button ID
       final RadioButton selectedRadioButton = (RadioButton) binding.getRoot().findViewById(selectedId);
       Log.i(TAG, String.format("Selected theme: %s", selectedRadioButton.getText().toString()));
 
-      if(selectedRadioButton.getText().toString().equals(getString(R.string.light_theme))){
+      if(selectedId == R.id.btn_radio_light){
         // Switch to light theme
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-      } else if (selectedRadioButton.getText().toString().equals(getString(R.string.dark_theme))){
+      } else if (selectedId == R.id.btn_radio_dark){
         // Switch to dark theme
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-      } else {
+      } else if (selectedId == R.id.btn_radio_device){
         // Switch to device theme
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+      } else {
+        Log.w(TAG, "Only three themes allowed: Dark theme, Light theme, Device theme");
       }
+
       dismiss();
     });
 
-    binding.btnCancel.setOnClickListener(cancelButton -> {
-      dismiss();
-    });
+    binding.btnCancel.setOnClickListener(cancelButton -> dismiss());
   }
 
   @Override
